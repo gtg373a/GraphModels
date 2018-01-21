@@ -67,8 +67,8 @@ phenotypeFactor.val = zeros(1, prod(phenotypeFactor.card));
 % Replace the zeros in phentoypeFactor.val with the correct values.
 A = IndexToAssignment([1:length(phenotypeFactor.val)], phenotypeFactor.card);
 for i=1:length(phenotypeFactor.val),
-	gt = allelesToGenotypes(A(i,2),A(i,3));
-	phenotypeFactor.val(i) = alphaList(gt) * (2 - A(i,1)) + (1-alphaList(gt)) * (A(i,1) - 1);
+	aTOg = allelesToGenotypes(A(i,2),A(i,3));
+	phenotypeFactor.val(i) = alphaList(aTOg) * (2 - A(i, 1)) + (1 - alphaList(aTOg)) * (A(i, 1) - 1);
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
