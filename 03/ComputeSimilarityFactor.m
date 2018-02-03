@@ -22,5 +22,12 @@ factor = struct('var', [], 'card', [], 'val', []);
 
 % Your code here:
 
+factor.var = [i, j];
+factor.card = [K, K];
+factor.val(1:prod(factor.card)) = 1;
+assign = [[1:K]', [1:K]'];
+ids = AssignmentToIndex(assign, factor.card);
+factor.val(ids) = ImageSimilarity(images(i).img, images(j).img);
+
 end
 
