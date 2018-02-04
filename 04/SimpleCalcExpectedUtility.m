@@ -22,7 +22,15 @@ function EU = SimpleCalcExpectedUtility(I)
   %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- 
-  
+  PaU = U.var;
+  V = unique([F(:).var]);
+  diff = setdiff(V, PaU);
+  Fnew = VariableElimination(F, diff);
+  F = Fnew(1);
+  for i=2:length(Fnew)
+      F = FactorProduct(F, Fnew(i));
+  end;
+  P = FactorProduct(F, U);
+  EU = sum(P.val);
   
 end
